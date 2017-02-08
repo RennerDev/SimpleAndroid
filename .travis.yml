@@ -1,17 +1,24 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 os:
-  - linux
+- linux
 before_install:
-  - chmod +x gradlew
+- chmod +x gradlew
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 script:
-  - ./gradlew clean
-  - ./gradlew compileJava
+- "./gradlew clean"
+- "./gradlew compileJava"
+deploy:
+  provider: releases
+  api_key:
+    secure: mxnwav8jIbbNUXz2+8qE8QfTIEZASwInjHO+78QLfsxqDZQBdX6s4ZnqrZM2wZ/7BqQk9LpjPrxSyEeq1C8R0SHRqa7K2TaA8BFNo0jeSwXSHZTzf7/KixaGQSrqRuBTb7DMMKhZdBXTccSb+WNj0fTZYbpTcyNBG/Td8VHXdh/mTHteprqI+GQ9xv8t2anPcgfvPkr+4UL9AeCLYWfhcOoyhOlOydkyhHE5WuoIqiCbLbLHO+o33vaOCHLwPl71scM/wIshrX8IP9KAZjj+CXhh0G9p7w3vdQsb1AuxhqLAvdqWnOHjn2TLEBIm++ND0mZN4exx/1SRuQkUgHH7+AGFECY0oXMtn+DI5oFemKEBMYxevJXcPy8kB5xATbm3owbnWjxX4kGK3Jfr/4EFq4wWzYmL3s9unLv1BdqgVwQyDf/HGWW7t54D6AwwIlGXehmYTlgiAYvZwP766bAJeCrxZ+LNY5Y3NcDEN55cqUkoargkUnO3qdVYKcMaCjN68NzYG/EGFnVMKrWK144cyZan8FgFMaC3s0Ca56beSToOz5SPONF4f/2Z78DJr7z0zvq4HDaitJ1E4x0U00+Hyd6ubnH4jovM0rz0sUoJYA6B756Hid6GQJEmnUFVDSIhEummeVsTsnCH6KcZhxccsw/9JBymPV2sBnlJQyNCVNk=
+  file: SimpleAndroid-all.jar
+  on:
+    repo: RennerDev/SimpleAndroid
